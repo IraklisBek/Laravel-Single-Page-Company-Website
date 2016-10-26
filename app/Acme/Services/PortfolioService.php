@@ -31,18 +31,9 @@ class PortfolioService
         }
     }
 
-    public static function savePortfolio(Portfolio $portfolio){
-        try{
-            $portfolio->save();
-            MessageService::_message('success', 'Portfolio Uploaded Successfully');
-        }catch(Exception $e){
-            MessageService::_message('fail', 'Portfolio Could not uploaded: '. $e);
-        }
-    }
-
     public static function createOrUpdatePortfolio(Portfolio $portfolio, Request $request){
         self::insertPortfolioElements($portfolio, $request);
-        self::insertPortfolioImage($portfolio, $request);
-        self::savePortfolio($portfolio);
+        ImageService::insertImage($portfolio, 'background_image', $request, 'background_image', 'visitor/images/gallery/', 500, 600);
+        ModelService::SaveModelWithMessage($portfolio, "Portfolio ", " Uploaded Successfully", "could not be uploaded: ");
     }
 }

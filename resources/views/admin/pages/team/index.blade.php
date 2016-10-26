@@ -119,11 +119,11 @@
         </div>
         <div class="col-md-5 col-sm-4">
             {{ Form::label('skill_id', 'Profession') }}
-            {{ Form::select('skill_id', $arrSkills, null, array('class' => 'form-control ', 'required' => '')) }}
+            {{ Form::select('skill_id', $data['arrSkills'], null, array('class' => 'form-control ', 'required' => '')) }}
         </div>
         <div class="col-md-5 col-sm-4">
             {{ Form::label('sub_skill_id', 'Sub Skills') }}
-            {{ Form::select('subSkills[]', $arrSubSkills, null, array('class' => 'form-control select2-multi', 'required' => '', 'multiple' => 'multiple')) }}
+            {{ Form::select('subSkills[]', $data['arrSubSkills'], null, array('class' => 'form-control select2-multi', 'required' => '', 'multiple' => 'multiple')) }}
         </div>
         <div class="col-md-5 col-sm-4">
             {{ Form::label('facebook_link', 'Facebook') }}
@@ -160,7 +160,7 @@
         <div id="dummy" style="top:0; display:none; left:0; position:fixed; width:100%; background-color: rgba(0, 0, 0, 0.93); margin-top:0%; z-index:100000; height:2000px;">
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
-    @foreach($members as $member)
+    @foreach($data['members'] as $member)
             <div id="dummy_close{{$member->id}}" style="display:none; top:0; position:fixed; width:50%; margin-left:5%; background-color: white; margin-top:12%; z-index:1000000">
                 <img src="/visitor/images/team/{{ $member->member_image }}" width="40%" style="border-radius: 50%; padding:3%; float:left">
                 <i class="fa fa-times fa-fw" style="font-size: x-large; float:right; cursor: pointer" id="close{{$member->id}}" onclick="closeMember(this.id);"></i>

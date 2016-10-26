@@ -140,7 +140,7 @@
     <hr>
     <?php $count=1; ?>
     <div style="margin-left: -5%; overflow: hidden">
-    @foreach($portfolio as $port)
+    @foreach($data['portfolio'] as $port)
         <div id="portView{{ $port->id }}"  style="width:25%; margin-left:5%; float:left;">
             <div class="btn-group" style="margin-top:4%; margin-left:29%; text-align: center">
                 <a href="{{ route('portfolio.edit', $port->id) }}" id="edit{{$port->id}}" class="btn btn-success">Edit</a>

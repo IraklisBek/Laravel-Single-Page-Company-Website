@@ -29,4 +29,17 @@ class PagesController extends Controller
         $data = DataContainer::getOnePageWebsiteData();
         return view('visitor.pages.portfolio')->with('data', $data);
     }
+    public function getTeam(){
+        $data = DataContainer::getOnePageWebsiteData();
+        return view('visitor.pages.team')->with('data', $data);
+    }
+
+    public function getContact(){
+        $data = DataContainer::getOnePageWebsiteData();
+        return view('visitor.pages.contact')->with('data', $data);
+    }
+    public function getSkills(){
+        $data = DataContainer::getOnePageWebsiteData();
+        return view('visitor.pages.skills')->with('data', $data);
+    }
 }

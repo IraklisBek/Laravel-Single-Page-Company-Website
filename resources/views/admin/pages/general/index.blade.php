@@ -53,12 +53,12 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td id="logo-image"><img src="/visitor/images/{{ $generals->logo_image }}" width="50px" height="50px"></td>
-                                                            <td id="company-name">{{ $generals->company_name }} </td>
-                                                            <td id="company-facebook"><a href="//{{ $generals->company_facebook }}">Facebook</a></td>
-                                                            <td id="company-twitter"><a href="//{{ $generals->company_twitter }}">Twitter</a></td>
-                                                            <td id="company_linked_in"><a href="//{{ $generals->company_linked_in }}">Linked In</a></td>
-                                                            <td id="company-something"><a href="//{{ $generals->company_something }}">Something</a></td>
+                                                            <td id="logo-image"><img src="/visitor/images/{{ $data['generals']->logo_image }}" width="50px" height="50px"></td>
+                                                            <td id="company-name">{{ $data['generals']->company_name }} </td>
+                                                            <td id="company-facebook"><a href="//{{ $data['generals']->company_facebook }}">Facebook</a></td>
+                                                            <td id="company-twitter"><a href="//{{ $data['generals']->company_twitter }}">Twitter</a></td>
+                                                            <td id="company_linked_in"><a href="//{{ $data['generals']->company_linked_in }}">Linked In</a></td>
+                                                            <td id="company-something"><a href="//{{ $data['generals']->company_something }}">Something</a></td>
                                                         </tr>
 
                                                     </tbody>
@@ -83,7 +83,7 @@
 
 
                                                             <div class="form-group">
-                                                                <img id="blah" src="/visitor/images/{{ $generals->logo_image }}" width="50px" height="50px" style="float:left"><br>
+                                                                <img id="blah" src="/visitor/images/{{ $data['generals']->logo_image }}" width="50px" height="50px" style="float:left"><br>
 
                                                                 {{ Form::label('logo_image', 'Logo') }}<br>
                                                                 <div style="position:relative;">
@@ -97,11 +97,11 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td id="company-name">{{ Form::text('company_name', $generals->company_name, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td id="company-facebook">{{ Form::text('company_facebook', $generals->company_facebook, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td id="company-twitter">{{ Form::text('company_twitter', $generals->company_twitter, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td id="company_linked_in">{{ Form::text('company_linked_in', $generals->company_linked_in, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td id="company-something">{{ Form::text('company_something', $generals->company_something, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td id="company-name">{{ Form::text('company_name', $data['generals']->company_name, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td id="company-facebook">{{ Form::text('company_facebook', $data['generals']->company_facebook, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td id="company-twitter">{{ Form::text('company_twitter', $data['generals']->company_twitter, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td id="company_linked_in">{{ Form::text('company_linked_in', $data['generals']->company_linked_in, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td id="company-something">{{ Form::text('company_something', $data['generals']->company_something, array('class' => 'form-control', 'required' => '')) }}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -122,16 +122,16 @@
                         <div class="tab-pane fade" id="team">
                             <h4>Team Tab</h4>
                             <div id="original-team">
-                                <b>Title: </b> {{ $generals->team_title }} <br>
-                                <b>Secondary Title: </b> {{ $generals->team_secondary_title }}<br>
+                                <b>Title: </b> {{ $data['generals']->team_title }} <br>
+                                <b>Secondary Title: </b> {{ $data['generals']->team_secondary_title }}<br>
                                 <button id="edit-team-btn" class="btn btn-primary" style="float:right">Edit</button>
 
                             </div>
                             <div id="edit-team" style="display:none">
                                 {!! Form::open(array('route' => ['general.update', 1, "team"], 'method' => 'PUT')) !!}
 
-                                <b>{{ Form::label('team_title', 'Team Title') }} </b>{{ Form::text('team_title', $generals->team_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}<br>
-                                <b>{{ Form::label('team_secondary_title', 'Team Secondary Title') }} </b> {{ Form::text('team_secondary_title', $generals->team_secondary_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}
+                                <b>{{ Form::label('team_title', 'Team Title') }} </b>{{ Form::text('team_title', $data['generals']->team_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}<br>
+                                <b>{{ Form::label('team_secondary_title', 'Team Secondary Title') }} </b> {{ Form::text('team_secondary_title', $data['generals']->team_secondary_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}
                                 {{ Form::submit('Save Changes', array('class' => 'btn btn-success', 'id' => 'save-team-btn', 'style' => 'display:none; float:right')) }}
                                 {!! Form::close() !!}
                                 <button id="cancel-team-btn" class="btn btn-danger" style="float:right; display:none">Cancel</button>
@@ -141,16 +141,16 @@
                         <div class="tab-pane fade" id="services">
                             <h4>Services Tab</h4>
                             <div id="original-services">
-                                <b>Title: </b> {{ $generals->services_title }} <br>
-                                <b>Secondary Title: </b> {{ $generals->services_secondary_title }}<br>
+                                <b>Title: </b> {{ $data['generals']->services_title }} <br>
+                                <b>Secondary Title: </b> {{ $data['generals']->services_secondary_title }}<br>
                                 <button id="edit-services-btn" class="btn btn-primary" style="float:right">Edit</button>
 
                             </div>
                             <div id="edit-services" style="display:none">
                                 {!! Form::open(array('route' => ['general.update', 1, "services"], 'method' => 'PUT')) !!}
 
-                                <b>{{ Form::label('services_title', 'Services Title') }} </b>{{ Form::text('services_title', $generals->services_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}<br>
-                                <b>{{ Form::label('services_secondary_title', 'Services Secondary Title') }} </b> {{ Form::text('services_secondary_title', $generals->services_secondary_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}
+                                <b>{{ Form::label('services_title', 'Services Title') }} </b>{{ Form::text('services_title', $data['generals']->services_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}<br>
+                                <b>{{ Form::label('services_secondary_title', 'Services Secondary Title') }} </b> {{ Form::text('services_secondary_title', $data['generals']->services_secondary_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}
                                 {{ Form::submit('Save Changes', array('class' => 'btn btn-success', 'id' => 'save-services-btn', 'style' => 'display:none; float:right')) }}
                                 {!! Form::close() !!}
                                 <button id="cancel-services-btn" class="btn btn-danger" style="float:right; display:none">Cancel</button>
@@ -160,16 +160,16 @@
                         <div class="tab-pane fade" id="portfolio">
                             <h4>Portfolio Tab</h4>
                             <div id="original-portfolio">
-                                <b>Title: </b> {{ $generals->portfolio_title }} <br>
-                                <b>Secondary Title: </b> {{ $generals->portfolio_secondary_title }}<br>
+                                <b>Title: </b> {{ $data['generals']->portfolio_title }} <br>
+                                <b>Secondary Title: </b> {{ $data['generals']->portfolio_secondary_title }}<br>
                                 <button id="edit-portfolio-btn" class="btn btn-primary" style="float:right">Edit</button>
 
                             </div>
                             <div id="edit-portfolio" style="display:none">
                                 {!! Form::open(array('route' => ['general.update', 1, "portfolio"], 'method' => 'PUT')) !!}
 
-                                <b>{{ Form::label('portfolio_title', 'Portfolio Title') }} </b>{{ Form::text('portfolio_title', $generals->portfolio_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}<br>
-                                <b>{{ Form::label('portfolio_secondary_title', 'Portfolio Secondary Title') }} </b> {{ Form::text('portfolio_secondary_title', $generals->portfolio_secondary_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}
+                                <b>{{ Form::label('portfolio_title', 'Portfolio Title') }} </b>{{ Form::text('portfolio_title', $data['generals']->portfolio_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}<br>
+                                <b>{{ Form::label('portfolio_secondary_title', 'Portfolio Secondary Title') }} </b> {{ Form::text('portfolio_secondary_title', $data['generals']->portfolio_secondary_title, array('class' => 'form-control', 'required' => '', 'style' => 'width:50%')) }}
                                 {{ Form::submit('Save Changes', array('class' => 'btn btn-success', 'id' => 'save-portfolio-btn', 'style' => 'display:none; float:right')) }}
                                 {!! Form::close() !!}
                                 <button id="cancel-portfolio-btn" class="btn btn-danger" style="float:right; display:none">Cancel</button>
@@ -204,19 +204,19 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>1</td>
-                                                        <td id="logo-image">{{ $generals->company_lat }}</td>
-                                                        <td id="company-name">{{ $generals->company_lng }} </td>
-                                                        <td id="company-facebook">{{ $generals->company_phone }}</td>
-                                                        <td id="company-twitter">{{ $generals->company_address }}</td>
-                                                        <td id="company_linked_in">{{ $generals->company_email }}</td>
-                                                        <td id="company-something">{{ $generals->contact_title }}</td>
-                                                        <td id="company-something">{{ $generals->contact_secondary_title }}</td>
+                                                        <td id="logo-image">{{ $data['generals']->company_lat }}</td>
+                                                        <td id="company-name">{{ $data['generals']->company_lng }} </td>
+                                                        <td id="company-facebook">{{ $data['generals']->company_phone }}</td>
+                                                        <td id="company-twitter">{{ $data['generals']->company_address }}</td>
+                                                        <td id="company_linked_in">{{ $data['generals']->company_email }}</td>
+                                                        <td id="company-something">{{ $data['generals']->contact_title }}</td>
+                                                        <td id="company-something">{{ $data['generals']->contact_secondary_title }}</td>
                                                     </tr>
 
                                                     </tbody>
                                                 </table>
                                                 <b>Contact Body:</b><br>
-                                                {{ $generals->contact_body }}
+                                                {{ $data['generals']->contact_body }}
                                                 </div>
                                                 <div id="edit-contact"  style="display:none;">
                                                 {!! Form::open(array('route' => ['general.update', 1, "contact"], 'method' => 'PUT')) !!}
@@ -236,18 +236,18 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>1</td>
-                                                        <td>{{ Form::text('company_lat', $generals->company_lat, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td>{{ Form::text('company_lng', $generals->company_lng, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td>{{ Form::text('company_phone', $generals->company_phone, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td>{{ Form::text('company_address', $generals->company_address, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td>{{ Form::text('company_email', $generals->company_email, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td>{{ Form::text('contact_title', $generals->contact_title, array('class' => 'form-control', 'required' => '')) }}</td>
-                                                        <td>{{ Form::text('contact_secondary_title', $generals->contact_secondary_title, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('company_lat', $data['generals']->company_lat, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('company_lng', $data['generals']->company_lng, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('company_phone', $data['generals']->company_phone, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('company_address', $data['generals']->company_address, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('company_email', $data['generals']->company_email, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('contact_title', $data['generals']->contact_title, array('class' => 'form-control', 'required' => '')) }}</td>
+                                                        <td>{{ Form::text('contact_secondary_title', $data['generals']->contact_secondary_title, array('class' => 'form-control', 'required' => '')) }}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                                 {{ Form::label('contact_body', 'Contact Body') }}
-                                                {{Form::textarea('contact_body', $generals->contact_body, array('class' => 'form-control', 'required' => '') )}}
+                                                {{Form::textarea('contact_body', $data['generals']->contact_body, array('class' => 'form-control', 'required' => '') )}}
 
                                                 {{ Form::submit('Save Changes', array('class' => 'btn btn-success', 'id' => 'save-contact-btn', 'style' => 'display:none; float:right')) }}
                                                 {!! Form::close() !!}

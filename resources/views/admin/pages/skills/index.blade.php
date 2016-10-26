@@ -56,7 +56,7 @@
     </div>
     <div>
         <h3 style="margin-left:3%;"><b>Associate with SubSkills</b></h3>
-        @foreach($subSkills as $subSkill)
+        @foreach($data['subSkills'] as $subSkill)
             <h3 style="margin-left:3%; width:20%; float:left;"><span >{{ $subSkill->name }} </span></h3><h2><a onclick="associate(this)" id="sub_skill{{ $subSkill->id }}" rel="{{ $subSkill->id }}" class="btn btn-success">Associate</a></h2><br>
         @endforeach
     </div>
@@ -72,7 +72,7 @@
     <hr>
     <?php $count=1; ?>
     <div style="margin-left: -5%; overflow: hidden" id="theSkills">
-        @foreach($skills as $skill)
+        @foreach($data['skills'] as $skill)
             <div id="skillView{{ $skill->id }}"  style="width:25%; margin-left:5%; float:left;">
                 <div class="btn-group" style="margin-top:4%; margin-left:17%; text-align: center">
                     <a href="{{ route('skills.edit', $skill->id) }}" id="edit{{$skill->id}}" class="btn btn-success">Edit</a>
@@ -107,7 +107,7 @@
     <script>
         $('#storeSkill').submit(function(event){
             var subs = [];
-            @foreach($subSkills as $subSkill)
+            @foreach($data['subSkills'] as $subSkill)
                 var a = $("#sub_skill{{ $subSkill->id }}").text();
                 if(a.indexOf('Associated') == 0) {
                     subs.push("{{$subSkill->id}}");
@@ -125,7 +125,7 @@
                 success: function (response) {
                     console.log(response);
                     if(response == "correct"){
-                        @foreach($subSkills as $subSkill)
+                        @foreach($data['subSkills'] as $subSkill)
                             var a = $("#sub_skill{{ $subSkill->id }}").text();
                             if(a.indexOf('Associated') == 0) {
                                 $("#sub_skill{{ $subSkill->id }}").html('Associate').addClass('btn-success').removeClass('btn-primary glyphicon glyphicon-ok')

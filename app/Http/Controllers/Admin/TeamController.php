@@ -22,10 +22,7 @@ class TeamController extends Controller
     {
         $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.team.index')
-            ->with('members', $data['members'])
-            ->with('skills', $data['skills'])
-            ->with('arrSkills', $data['arrSkills'])
-            ->with('arrSubSkills', $data['arrSubSkills']);
+            ->with('data', $data);
     }
 
     /**
@@ -80,9 +77,7 @@ class TeamController extends Controller
         $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.team.edit')
             ->with('member', $member)
-            ->with('skills', $data['skills'])
-            ->with('arrSkills', $data['arrSkills'])
-            ->with('arrSubSkills', $data['arrSubSkills']);
+            ->with('data', $data);
     }
 
     /**

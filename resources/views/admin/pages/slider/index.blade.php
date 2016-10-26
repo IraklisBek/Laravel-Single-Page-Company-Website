@@ -103,7 +103,7 @@
     <hr>
     <?php $count=1; ?>
     <div style="margin-left: -5%; overflow: hidden">
-    @foreach($slides as $slide)
+    @foreach($data['slides'] as $slide)
         <div id="slidesView{{ $slide->id }}"  style="width:25%; margin-left:5%; float:left;">
             <div class="btn-group" style="margin-top:4%; margin-left:17%; text-align: center">
                 <button onclick='showIFramePostView("#slideImage{{ $slide->id }}", "{{ $slide->main_title }}", "{{ $slide->secondary_title }}", "{{ $slide->button }}")' id="view{{$slide->id}}" class="btn btn-primary">View</button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Acme\Container\DataContainer;
 use App\Acme\Services\GeneralService;
 use App\Acme\Services\ValidationService;
 use App\General;
@@ -19,9 +20,9 @@ class GeneralController extends Controller
      */
     public function index()
     {
-        $generals = General::find(1);
+        $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.general.index')
-            ->with('generals', $generals);
+            ->with('data', $data);
     }
 
     /**
@@ -76,11 +77,12 @@ class GeneralController extends Controller
      */
     public function update(Request $request, $id, $page)
     {
-        $general = General::find(1);
-        $validator = ValidationService::validateUpdateGeneral($request, $general, $page);
+        //$general = General::find(1);
+        $data = DataContainer::getOnePageWebsiteData();
+        $validator = ValidationService::validateUpdateGeneral($request, $data['generals'], $page);
         if($validator->fails())
             return redirect()->route('general.index')->withErrors($validator)->withInput();
-        GeneralService::createOrUpdateGeneral($general, $request, $page);
+        GeneralService::createOrUpdateGeneral($data['generals'], $request, $page);
         return redirect()->route('general.index');
     }
 

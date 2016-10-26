@@ -30,17 +30,9 @@ class SkillService
         return $arr;
     }
 
-    public static function saveSkill(Skill $skill){
-        try{
-            $skill->save();
-            MessageService::_message('success', 'Skill Uploaded Successfully');
-        }catch(Exception $e){
-            MessageService::_message('fail', 'Skill Could not uploaded: '. $e);
-        }
-    }
 
     public static function createOrUpdateSkill(Skill $skill, Request $request){
         self::insertSkillElements($skill, $request);
-        self::saveSkill($skill);
+        ModelService::SaveModelWithMessage($skill, "Skill ", " Uploaded Successfully", "could not be uploaded: ");
     }
 }

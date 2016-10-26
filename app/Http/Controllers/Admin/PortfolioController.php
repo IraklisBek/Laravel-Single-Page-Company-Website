@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Acme\Container\DataContainer;
 use App\Acme\Services\PortfolioService;
 use App\Acme\Services\ValidationService;
 use App\Portfolio;
@@ -19,9 +20,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolio = Portfolio::all();
+        $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.portfolio.index')
-            ->with('portfolio', $portfolio);
+            ->with('data', $data);
     }
 
     /**

@@ -21,17 +21,8 @@ class ServiceService
         $service->icon = $request->get('icon');
     }
 
-    public static function saveService(Service $service){
-        try{
-            $service->save();
-            MessageService::_message('success', 'Slider Image Uploaded Successfully');
-        }catch(Exception $e){
-            MessageService::_message('fail', 'Slider Image Could not uploaded: '. $e);
-        }
-    }
-
     public static function createOrUpdateService(Service $service, Request $request){
         self::insertServiceElements($service, $request);
-        self::saveService($service);
+        ModelService::SaveModelWithMessage($service, "Service ", " Uploaded Successfully", "could not be uploaded: ");
     }
 }

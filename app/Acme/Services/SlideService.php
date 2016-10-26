@@ -24,28 +24,9 @@ class SlideService
         $slide->button = $request->get('button');
     }
 
-    public static function insertSlideImage(Slide $slide, Request $request){
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = time().'.'.$image->getClientOriginalExtension();
-            $location = public_path('visitor/images/slider/'. $filename);
-            Image::make($image)->resize(1600, 750)->save($location);
-            $slide->image = $filename;
-        }
-    }
-
-    public static function saveSlide(Slide $slide){
-        try{
-            $slide->save();
-            MessageService::_message('success', 'Slider Image Uploaded Successfully');
-        }catch(Exception $e){
-            MessageService::_message('fail', 'Slider Image Could not uploaded: '. $e);
-        }
-    }
-
     public static function createOrUpdateSlide(Slide $slide, Request $request){
         self::insertSlideElements($slide, $request);
-        self::insertSlideImage($slide, $request);
-        self::saveSlide($slide);
+        ImageService::insertImage($slide, 'image', $request, 'image', 'visitor/images/slider/', 1600, 750);
+        ModelService::SaveModelWithMessage($slide, "Slide Image ", " Uploaded Successfully", "could not be uploaded: ");
     }
 }

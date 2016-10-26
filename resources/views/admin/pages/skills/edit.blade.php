@@ -38,7 +38,7 @@
     </div>
     <div>
         <h2 style="margin-left:3%;">Associate with Skills</h2>
-        @foreach($subSkills as $subSkill)
+        @foreach($data['subSkills'] as $subSkill)
             <h3 style="margin-left:3%; width:20%; float:left;"><span >{{ $subSkill->name }} </span></h3>
             @if(!$skillSubSkills->contains($subSkill))
                 <h2><a onclick="associate(this)" id="sub_skill{{ $subSkill->id }}" rel="{{ $subSkill->id }}" class="btn btn-success">Associate</a></h2><br>
@@ -67,7 +67,7 @@
     <script>
         $('#storeSkill').submit(function(event){
             var subs = [];
-            @foreach($subSkills as $subSkill)
+            @foreach($data['subSkills'] as $subSkill)
             var a = $("#sub_skill{{ $subSkill->id }}").text();
             if(a.indexOf('Associated') == 0) {
                 subs.push("{{$subSkill->id}}");

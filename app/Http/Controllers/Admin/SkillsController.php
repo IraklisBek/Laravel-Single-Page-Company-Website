@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Acme\Container\DataContainer;
 use App\Acme\Services\MessageService;
 use App\Acme\Services\SkillService;
 use App\Acme\Services\ValidationService;
@@ -23,11 +24,9 @@ class SkillsController extends Controller
      */
     public function index()
     {
-        $skills = Skill::with('subSkills')->get();
-        $subSkills = SubSkill::all();
+        $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.skills.index')
-            ->with('skills', $skills)
-            ->with('subSkills', $subSkills);
+            ->with('data', $data);
     }
 
     /**
@@ -89,11 +88,11 @@ class SkillsController extends Controller
     {
         $skill = Skill::with('subSkills')->find($id);
         $skillSubSkills = $skill->subSkills;
-        $subSkills = SubSkill::all();
+        $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.skills.edit')
             ->with('skill', $skill)
             ->with('skillSubSkills', $skillSubSkills)
-            ->with('subSkills', $subSkills);
+            ->with('data', $data);
     }
 
     /**

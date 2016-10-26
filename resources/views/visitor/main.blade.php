@@ -18,23 +18,17 @@
         @include('visitor.partials.nav')
         @include('visitor.pages.slider')
     </div> <!-- /.site-main -->
-    <div id="appends">
 
-    </div>
-    <div class="content-section" id="services">
-        @include('visitor.pages.services')
+    <div class="content-section" id="services" style="display: none">
     </div> <!-- /#services -->
 
-    <div class="content-section" id="portfolio">
-        @include('visitor.pages.portfolio')
+    <div class="content-section" id="portfolio" style="display:none">
     </div> <!-- /#portfolio -->
 
-    <div class="content-section" id="our-team">
-        @include('visitor.pages.team')
-        @include('visitor.pages.skills')
+    <div class="content-section" id="our-team" style="display: none">
     </div> <!-- /#our-team -->
 
-    <div class="content-section" id="contact">
+    <div class="content-section" id="contact" style="display:none">
         @include('visitor.pages.contact')
     </div> <!-- /#contact -->
 

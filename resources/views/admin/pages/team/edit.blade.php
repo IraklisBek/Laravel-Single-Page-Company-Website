@@ -51,11 +51,11 @@
         </div>
         <div class="col-md-5 col-sm-4">
             {{ Form::label('skill_id', 'Profession') }}
-            {{ Form::select('skill_id', $arrSkills, null, array('class' => 'form-control ', 'required' => '')) }}
+            {{ Form::select('skill_id', $data['arrSkills'], null, array('class' => 'form-control ', 'required' => '')) }}
         </div>
         <div class="col-md-5 col-sm-4">
             {{ Form::label('sub_skill_id', 'Sub Skills') }}
-            {{ Form::select('subSkills[]', $arrSubSkills, null, array('class' => 'form-control select2-multi', 'required' => '', 'multiple' => 'multiple')) }}
+            {{ Form::select('subSkills[]', $data['arrSubSkills'], null, array('class' => 'form-control select2-multi', 'required' => '', 'multiple' => 'multiple')) }}
         </div>
         <div class="col-md-5 col-sm-4">
             {{ Form::label('facebook_link', 'Facebook') }}

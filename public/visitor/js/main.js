@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
 
     /************** LightBox *********************/
       $(function(){
-        $('[data-rel="lightbox"]').lightbox();
+        //
       });
 
 

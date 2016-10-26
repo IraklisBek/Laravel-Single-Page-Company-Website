@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Acme\Container\DataContainer;
 use App\Acme\Services\ServiceService;
 use App\Acme\Services\ValidationService;
 use App\Service;
@@ -19,9 +20,9 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.services.index')
-            ->with('services', $services);
+            ->with('services', $data);
     }
 
     /**

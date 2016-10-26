@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Acme\Container\DataContainer;
 use App\Acme\Services\MessageService;
 use App\Acme\Services\SlideService;
 use App\Acme\Services\ValidationService;
@@ -20,9 +21,9 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slides = Slide::all();
+        $data = DataContainer::getOnePageWebsiteData();
         return view('admin.pages.slider.index')
-            ->with('slides', $slides);
+            ->with('data', $data);
     }
 
     /**

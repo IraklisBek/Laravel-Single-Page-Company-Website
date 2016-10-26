@@ -14,6 +14,9 @@
 Route::get('/', 'Visitor\\PagesController@getWebsite')->name('website');
 Route::get('/services', 'Visitor\\PagesController@getServices')->name('services');
 Route::get('/portfolio', 'Visitor\\PagesController@getPortfolio')->name('portfolio');
+Route::get('/team', 'Visitor\\PagesController@getTeam')->name('team');
+Route::get('/skills', 'Visitor\\PagesController@getSkills')->name('skills');
+Route::get('/contact', 'Visitor\\PagesController@getContact')->name('contact');
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/administrator', 'Admin\\AdminController@getIndex');

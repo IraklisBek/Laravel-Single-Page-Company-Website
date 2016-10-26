@@ -24,28 +24,9 @@ class TeamService
         $member->linked_in_link = $request->get('linked_in_link');
     }
 
-    public static function insertTeamImage(Team $member, Request $request){
-        if($request->hasFile('member-image')){
-            $image = $request->file('member-image');
-            $filename = time().'.'.$image->getClientOriginalExtension();
-            $location = public_path('visitor/images/team/'. $filename);
-            Image::make($image)->resize(500, 500)->save($location);
-            $member->member_image = $filename;
-        }
-    }
-
-    public static function saveTeam(Team $member){
-        try{
-            $member->save();
-            MessageService::_message('success', 'Team Member Uploaded Successfully');
-        }catch(Exception $e){
-            MessageService::_message('fail', 'Team Member Could not uploaded: '. $e);
-        }
-    }
-
     public static function createOrUpdateTeam(Team $member, Request $request){
         self::insertTeamElements($member, $request);
-        self::insertTeamImage($member, $request);
-        self::saveTeam($member);
+        ImageService::insertImage($member, 'member_image', $request, 'member-image', 'visitor/images/team/', 500, 500);
+        ModelService::SaveModelWithMessage($member, "Team Member ", " Uploaded Successfully", "could not be uploaded: ");
     }
 }
