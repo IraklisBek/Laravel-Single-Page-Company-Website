@@ -28,6 +28,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('/admin/portfolio', 'Admin\\PortfolioController');
     Route::resource('/admin/team', 'Admin\\TeamController');
     Route::resource('/admin/services', 'Admin\\ServicesController');
+    Route::resource('/admin/tasks', 'Admin\\TaskController');
     Route::resource('/admin/skills', 'Admin\\SkillsController');
     Route::resource('/admin/subSkills', 'Admin\\SubSkillsController');
 
