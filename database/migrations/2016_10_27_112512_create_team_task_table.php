@@ -21,6 +21,7 @@ class CreateTeamTaskTable extends Migration
         });
 
         Schema::table('team_task', function(Blueprint $table){
+            //
             $table->foreign('team_id')->references('id')->on('team');
             $table->foreign('task_id')->references('id')->on('tasks');
         });
